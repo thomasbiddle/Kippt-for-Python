@@ -8,6 +8,7 @@ class user:
 		self.apitoken = apitoken
 		self.header = {'X-Kippt-Username': username, 'X-Kippt-API-Token': apitoken, 'X-Kippt-Client': 'Kippt-Python-Wrapper,me@ThomasBiddle.com,https://github.com/thomasbiddle/Kippt-Projects', 'content-type': 'application/vnd.kippt.20120609+json'}
 	
+	# Check if our credentials are valid.
 	# Example:
 	# user.checkAuth()
 	#
@@ -17,6 +18,7 @@ class user:
 		if r.status_code is 200: return True
 		else: return False
 	
+	# Get our lists.
 	# Example:
 	# meta, lists = user.getLists(offset = 5)
 	# meta, lists = user.getLists(50, 5) # (limit, offset)
@@ -37,6 +39,7 @@ class user:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
 	
+	# Get a list.
 	# Example:
 	# myList = user.getList(54433)
 	# x = myList['title']
@@ -50,7 +53,8 @@ class user:
 		if r.status_code is 200: 
 			return r.json
 		else: return False
-		
+	
+	# Get our clips.
 	# Example:
 	# myClips = user.getClips()
 	# myClips = user.getClips(54332, 20, 5) # (listID, limit, offset)
@@ -70,6 +74,7 @@ class user:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
 		
+	# Get a clip.
 	# Example:
 	# myClip = user.getClip(2027593)
 	# x = myClip['title']
@@ -83,6 +88,8 @@ class user:
 		if r.status_code is 200: 
 			return r.json
 		else: return False
+		
+	# Search for a query.
 	# Example:
 	# mySearch = user.search("Programming")
 	#
@@ -99,7 +106,7 @@ class user:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
 		
-
+	# Add a clip.
 	# Examples:
 	# user.addClip('www.kippt.com')
 	# user.addClip('www.kippt.com',title="My Title!")
@@ -116,6 +123,28 @@ class user:
 			return True
 		else: return False
 		
+	# Delete a clip.
+	# Examples:
+	# user.deleteClip(2028643)
+	# 
+	# Will return True on success, and False on failure
+	def deleteClip(self, id):
+		r = requests.delete('https://kippt.com/api/clips/' + str(id), headers=self.header)
+		if r.status_code is 204:
+			return True
+		else: return False
+		
+	# Deleting a List.
+	# Examples:
+	# user.deleteList(54433)
+	# 
+	# Will return True on success, and False on failure
+	def deleteList(self, id):
+		r = requests.delete('https://kippt.com/api/lists/' + str(id), headers=self.header)
+		if r.status_code is 204:
+			return True
+		else: return False
+		
 # Testing purposes ( Faster than using the interpreter every time ;) )	
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
@@ -123,7 +152,9 @@ if __name__ == '__main__':
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		print client.addClip('www.facebook.com', title='facebook 10')
+		print client.getLists()
+		print client.deleteList(54433)
+		
 		
 
 		
