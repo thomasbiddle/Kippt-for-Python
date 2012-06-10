@@ -66,7 +66,6 @@ class user:
 		url = 'https://kippt.com/api/clips?limit=' + str(limit) + '&offset=' + str(offset)
 		if not listID is None: url = url + '&list=' + str(listID)
 		r = requests.get(url, headers=self.header)
-		print r.status_code
 		if r.status_code is 200:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
