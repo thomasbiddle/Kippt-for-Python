@@ -35,8 +35,7 @@ class user:
 	def getLists(self, limit = 0, offset = 0):	
 		url = 'https://kippt.com/api/lists?limit=' + str(limit) + '&offset=' + str(offset)
 		r = requests.get(url, headers=self.header)
-		if r.status_code is 200:
-			return r.json['meta'], r.json['objects']
+		if r.status_code is 200: return r.json['meta'], r.json['objects']
 		else: return False, False
 	
 	# Get a list.
@@ -50,8 +49,7 @@ class user:
 	# Returns data on success, and false on failure.
 	def getList(self, id):
 		r = requests.get('https://kippt.com/api/lists/' + str(id), headers=self.header)
-		if r.status_code is 200: 
-			return r.json
+		if r.status_code is 200: return r.json
 		else: return False
 	
 	# Get our clips.
@@ -70,8 +68,7 @@ class user:
 		url = 'https://kippt.com/api/clips?limit=' + str(limit) + '&offset=' + str(offset)
 		if not listID is None: url = url + '&list=' + str(listID)
 		r = requests.get(url, headers=self.header)
-		if r.status_code is 200:
-			return r.json['meta'], r.json['objects']
+		if r.status_code is 200: return r.json['meta'], r.json['objects']
 		else: return False, False
 		
 	# Get a clip.
@@ -85,8 +82,7 @@ class user:
 	# Returns data on success, and false on failure.	
 	def getClip(self, id):
 		r = requests.get('https://kippt.com/api/clips/' + str(id), headers=self.header)
-		if r.status_code is 200: 
-			return r.json
+		if r.status_code is 200: return r.json
 		else: return False
 		
 	# Search for a query.
@@ -102,8 +98,7 @@ class user:
 	def search(self, query, limit = 0, offset = 0):
 		query = urllib.quote_plus(query)
 		r = requests.get('https://kippt.com/api/search/clips/?q=' + query + '&limit=' + str(limit) + '&offset=' + str(offset), headers=self.header)
-		if r.status_code is 200:
-			return r.json['meta'], r.json['objects']
+		if r.status_code is 200: return r.json['meta'], r.json['objects']
 		else: return False, False
 		
 	# Add a clip.
@@ -119,8 +114,7 @@ class user:
 		if not starred is None: clipdata['is_starred'] = starred
 		if not notes is None: clipdata['notes'] = notes
 		r = requests.post('https://kippt.com/api/clips/', data=json.dumps(clipdata), headers=self.header)
-		if r.status_code is 201:
-			return True
+		if r.status_code is 201: return True
 		else: return False
 		
 	# Delete a clip.
@@ -130,19 +124,44 @@ class user:
 	# Will return True on success, and False on failure
 	def deleteClip(self, id):
 		r = requests.delete('https://kippt.com/api/clips/' + str(id), headers=self.header)
-		if r.status_code is 204:
-			return True
+		if r.status_code is 204: return True
 		else: return False
 		
-	# Deleting a List.
+	# Delete a List.
 	# Examples:
 	# user.deleteList(54433)
 	# 
 	# Will return True on success, and False on failure
 	def deleteList(self, id):
 		r = requests.delete('https://kippt.com/api/lists/' + str(id), headers=self.header)
-		if r.status_code is 204:
-			return True
+		if r.status_code is 204: return True
+		else: return False
+		
+	# Update a Clip
+	# Example: 
+	# pyRespUpdateClip(id=2027593, list_uri='/api/lists/55284/')	
+	#
+	# Returns True on success, False on failure.
+	def updateClip(self, id, title = None, notes = None, listID = None, starred = None):
+		clipdata = {}
+		if not title is None: clipdata['title'] = title
+		if not notes is None: clipdata['notes'] = notes
+		if not starred is None: clipdata['is_starred'] = starred
+		if not listID is None: clipdata['list'] = '/api/lists/55284/' + listID
+		r = requests.put('https://kippt.com/api/clips/' + str(id), data=json.dumps(clipdata), headers=self.header)
+		if r.status_code is 200: return True
+		else: return False
+	
+	# Updating List ( With Python Requests )
+	# Example: 
+	# client.updateList(55284, title="New Title!")
+	#
+	# Returns True on success, False on failure.
+	def updateList(self, id, title = None):
+		clipdata = {}
+		if not title is None: clipdata['title'] = title
+		r = requests.put('https://kippt.com/api/lists/' + str(id), data=json.dumps(clipdata), headers=self.header)
+		if r.status_code is 200: return True
 		else: return False
 		
 # Testing purposes ( Faster than using the interpreter every time ;) )	
@@ -152,9 +171,6 @@ if __name__ == '__main__':
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		print client.getLists()
-		print client.deleteList(54433)
-		
 		
 
 		
