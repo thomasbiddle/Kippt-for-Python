@@ -96,7 +96,7 @@ class user:
 	def search(self, query, limit = 0, offset = 0):
 		query = urllib.quote_plus(query)
 		r = requests.get('https://kippt.com/api/search/clips/?q=' + query + '&limit=' + str(limit) + '&offset=' + str(offset), headers=self.header)
-		if r.status_code is 205:
+		if r.status_code is 200:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
 		
@@ -117,17 +117,13 @@ class user:
 		r = requests.post('https://kippt.com/api/clips/', data=json.dumps(clipdata), headers=self.header)
 		return r.status_code
 		
-# Testing purposes.		
+# Testing purposes ( Faster than using the interpreter every time ;) )	
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
 		print "Looks like your forgot something, or added too much!"
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		x, y = client.search('androasfid',5,3)
-		if x:
-			print x
-			print y
 
 
 		
