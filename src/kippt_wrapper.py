@@ -99,9 +99,7 @@ class user:
 			return r.json['meta'], r.json['objects']
 		else: return False, False
 		
-	#######################################
-	# Extra on top of C# Library ( Will continue to add to this )
-	#######################################
+
 	# Examples:
 	# user.addClip('www.kippt.com')
 	# user.addClip('www.kippt.com',title="My Title!")
@@ -114,7 +112,9 @@ class user:
 		if not starred is None: clipdata['is_starred'] = starred
 		if not notes is None: clipdata['notes'] = notes
 		r = requests.post('https://kippt.com/api/clips/', data=json.dumps(clipdata), headers=self.header)
-		return r.status_code
+		if r.status_code is 201:
+			return True
+		else: return False
 		
 # Testing purposes ( Faster than using the interpreter every time ;) )	
 if __name__ == '__main__':
@@ -123,6 +123,7 @@ if __name__ == '__main__':
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-
+		print client.addClip('www.facebook.com', title='facebook 10')
+		
 
 		
