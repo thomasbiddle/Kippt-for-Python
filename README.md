@@ -20,7 +20,6 @@ True
 >>> myClient.getList(55284)
 {u'rss_url': u'https://kippt.com/feed/urinsan3/GQg00z0tSLJHGBj8PXrKouVtuos1/my-list', u'updated': u'1339296452', u'created': u'1339284366', u'title': u'My List', u'slug': u'my-list', u'id': 55284, u'resource_uri': u'/api/lists/55284/'}
 >>> myClient.getClips()
-200
 ({u'total_count': 2, u'limit': 0, u'offset': 0}, [{u'url_domain': u'google.com', u'updated': u'1339296441', u'title': u'Google', u'url': u'http://www.google.com/', u'notes': u'Testing Notes!', u'created': u'1339296431', u'list': u'/api/lists/55284/', u'is_starred': False, u'id': 2028643, u'resource_uri': u'/api/clips/2028643/'}, {u'url_domain': u'android-ui-utils.googlecode.com', u'updated': u'1339284376', u'title': u'Android Asset Studio', u'url': u'http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html', u'notes': u'', u'created': u'1339281459', u'list': u'/api/lists/55284/', u'is_starred': False, u'id': 2028518, u'resource_uri': u'/api/clips/2028518/'}])
 >>> myClient.getClip(2028643)
 {u'url_domain': u'google.com', u'updated': u'1339296441', u'title': u'Google', u'url': u'http://www.google.com/', u'notes': u'Testing Notes!', u'created': u'1339296431', u'list': u'/api/lists/55284/', u'is_starred': False, u'id': 2028643, u'resource_uri': u'/api/clips/2028643/'}
