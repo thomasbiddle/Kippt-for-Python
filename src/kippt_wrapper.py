@@ -24,7 +24,7 @@ class user:
 	# meta, lists = user.getLists(50, 5) # (limit, offset)
 	# meta, lists = user.getLists()
 	# x = meta['total_count']
-	# y = lists['title']
+	# for i in lists: print i['title'] ( Returns Python list of Kippt Lists )
 	# 
 	# Available values in meta:
 	# total_count, limit, offset
@@ -51,12 +51,26 @@ class user:
 		r = requests.get('https://kippt.com/api/lists/' + str(id), headers=self.header)
 		if r.status_code is 200: return r.json
 		else: return False
+		
+	# Get list collaborators
+	# Example:
+	# myCollabs = user.getListCollab(54433)
+	# for i in myCollabs: print i['username']
+	#
+	# Available values in list:
+	# username, avatar_url, id, resource_uri
+	#
+	# Returns data on success, and false on failure.
+	def getListCollab(self, id):
+		r = requests.get('https://kippt.com/api/lists/' + str(id) + '/collaborators', headers=self.header)
+		if r.status_code is 200: return r.json
+		else: return False
 	
 	# Get our clips.
 	# Example:
 	# myClips = user.getClips()
 	# myClips = user.getClips(54332, 20, 5) # (listID, limit, offset)
-	# myClicps = user.getClips(limit = 20)
+	# myClips = user.getClips(limit = 20)
 	#
 	# Available values in meta:
 	# total_count, limit, offset
@@ -117,7 +131,7 @@ class user:
 		if r.status_code is 201: return True
 		else: return False
 		
-	# Delete a clip.
+	# Delete a clip ( Only clip owners can modify or delete clips, not collaborators! )
 	# Examples:
 	# user.deleteClip(2028643)
 	# 
@@ -127,7 +141,7 @@ class user:
 		if r.status_code is 204: return True
 		else: return False
 		
-	# Delete a List.
+	# Delete a List
 	# Examples:
 	# user.deleteList(54433)
 	# 
@@ -137,7 +151,7 @@ class user:
 		if r.status_code is 204: return True
 		else: return False
 		
-	# Update a Clip
+	# Update a Clip ( Only clip owners can modify or delete clips, not collaborators! )
 	# Example: 
 	# pyRespUpdateClip(id=2027593, list_uri='/api/lists/55284/')	
 	#
@@ -171,6 +185,4 @@ if __name__ == '__main__':
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		
-
 		
