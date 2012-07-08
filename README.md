@@ -27,4 +27,4 @@ True
 ({u'total_count': 1, u'offset': 0, u'limit': 0, u'query': u'android'}, [{u'url_domain': u'android-ui-utils.googlecode.com', u'updated': u'1339284376', u'title': u'Android Asset Studio', u'url': u'http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html', u'notes': u'', u'created': u'1339281459', u'list': u'/api/lists/55284/', u'is_starred': False, u'id': 2028518, u'resource_uri': u'/api/clips/2028518/'}])
 >>> u.getListCollab(55284)
 [{u'username': u'thomasbiddle', u'avatar_url': u'https://secure.gravatar.com/avatar/a5cb7b8b8594fa9483d89c020e79014f/?default=https%3A%2F%2Fkippt.com%2Fstatic%2Fimg%2Fdefault-avatar.jpg&amp;s=160', u'id': 16993, u'resource_uri': u'/api/users/16993/'}]
-</pre>
+</pre> 

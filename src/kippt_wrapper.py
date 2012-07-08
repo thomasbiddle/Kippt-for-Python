@@ -113,7 +113,18 @@ class user:
 		query = urllib.quote_plus(query)
 		r = requests.get('https://kippt.com/api/search/clips/?q=' + query + '&limit=' + str(limit) + '&offset=' + str(offset), headers=self.header)
 		if r.status_code is 200: return r.json['meta'], r.json['objects']
-		else: return False, False
+		else: return False, False 
+		
+	# Create a list.
+	# Examples:
+	# user.createList('My New List!')
+	#
+	# Will return data on success and False on failure.
+	def createList(self, name):
+		clipdata = {'title': name}
+		r = requests.post('https://kippt.com/api/lists/', data=json.dumps(clipdata), headers=self.header)
+		if r.status_code is 201: return r.json
+		else: return False
 		
 	# Add a clip.
 	# Examples:
@@ -121,14 +132,24 @@ class user:
 	# user.addClip('www.kippt.com',title="My Title!")
 	# user.addClip('www.kippt.com',1234,starred="true",notes='My Notes!')
 	#
-	# Will return Status Code 201 on success.
+	# Will return data on success and False on failure.
 	def addClip(self, url, listID=0, title = None, starred = None, notes = None, ): 	
 		clipdata = {'url': url, 'list': '/api/lists/' + str(listID)}
 		if not title is None: clipdata['title'] = title
 		if not starred is None: clipdata['is_starred'] = starred
 		if not notes is None: clipdata['notes'] = notes
 		r = requests.post('https://kippt.com/api/clips/', data=json.dumps(clipdata), headers=self.header)
-		if r.status_code is 201: return True
+		if r.status_code is 201: return r.json
+		else: return False
+		
+	# Create a list.
+	# Examples:
+	# newList = user.createList('Programming')
+	# print newList
+	def createList(self, name):
+		clipdata = {'title': name}
+		r = requests.post('https://kippt.com/api/lists/', data=json.dumps(clipdata), headers=self.header)
+		if r.status_code is 201: return r.json
 		else: return False
 		
 	# Delete a clip ( Only clip owners can modify or delete clips, not collaborators! )
@@ -185,4 +206,5 @@ if __name__ == '__main__':
 		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
 	else:
 		client = user(sys.argv[1],sys.argv[2])
+		print client.addClip('http://newclip.com')
 		
