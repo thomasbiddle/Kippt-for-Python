@@ -206,5 +206,5 @@ if __name__ == '__main__':
 		print("Please start the script like so: python kippt_wrapper.py <username> <API_Token>")
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		print(client.addClip('http://newclip.com'))
+		print(client.getLists())
 		
