@@ -202,9 +202,9 @@ class user:
 # Testing purposes ( Faster than using the interpreter every time ;) )	
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
-		print "Looks like your forgot something, or added too much!"
-		print "Please start the script like so: python kippt_wrapper.py <username> <API_Token>"
+		print("Looks like your forgot something, or added too much!")
+		print("Please start the script like so: python kippt_wrapper.py <username> <API_Token>")
 	else:
 		client = user(sys.argv[1],sys.argv[2])
-		print client.addClip('http://newclip.com')
+		print(client.addClip('http://newclip.com'))
 		
