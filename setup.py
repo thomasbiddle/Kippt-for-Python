@@ -17,16 +17,9 @@ if sys.argv[-1] == 'publish':
 
 os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
-description = ""
-with open('README','r') as readme:
-    description = readme.read()
-license = "wtfpl"
-with open('LICENSE','r') as licenseFile:
-    license = licenseFile.read()
-
 setup(
     name='kippt',
-    version="0.1.1dev",
+    version="1.0.0",
     description='Kippt.com API wrapper for Python',
     long_description=open('README').read(),
     author='TJ (Thomas) Biddle',
@@ -35,7 +28,7 @@ setup(
     packages=['kippt',],
     package_data={'': ['LICENSE']},
     include_package_data=True,
-    license=license,
+    license='wtfpl',
 )
 
 del os.environ['PYTHONDONTWRITEBYTECODE']
