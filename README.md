@@ -6,6 +6,17 @@
 <p>
 This is a Python wrapper for <a href="https://kippt.com/developers">Kippt's API</a>. It has all of the features of the <a href="http://haythem.github.com/Kippt.NET/">C# library</a>, plus some extras - and is still in development.
 
+<h3>Installation</h3>
+<pre>
+	pip install kippt
+</pre>
+
+<h3>Usage</h3>
+<pre>
+	import kippt.kippt as kippt
+	user = kippt.user('yourUsername','yourAPITokenHere')
+</pre>
+
 <h3>Documentation</h3>
 <p>
 The file is heavily commented on documentation - so just take a look if you need any further clarification. I tried to keep as close to the C# library as possible.
@@ -14,7 +25,7 @@ The file is heavily commented on documentation - so just take a look if you need
 Python 2.7.3 (default, May  9 2012, 23:42:16)
 [GCC 4.4.3] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
->>> import kippt_wrapper as kippt
+>>> import kippt.kippt as kippt
 >>> myClient = kippt.user('yourUsername','yourAPITokenHere')
 >>> myClient.checkAuth()
 True
