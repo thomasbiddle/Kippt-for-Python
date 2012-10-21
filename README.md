@@ -1,12 +1,12 @@
 <h1>Python Wrapper for Kippt</h1>
 
-<h3>TOOD</h3>
+<h3>TODO</h3>
 - Create Python Egg
 
 <p>
 This is a Python wrapper for <a href="https://kippt.com/developers">Kippt's API</a>. It has all of the features of the <a href="http://haythem.github.com/Kippt.NET/">C# library</a>, plus some extras - and is still in development.
 
-<h3>Documenation</h3>
+<h3>Documentation</h3>
 <p>
 The file is heavily commented on documentation - so just take a look if you need any further clarification. I tried to keep as close to the C# library as possible.
 
