@@ -1,3 +1,9 @@
+# setup.py output
+build/
+dist/
+kippt.egg-info/
+
+# OS Files
 .DS_Store
 .DS_Store?
 *.pyc
