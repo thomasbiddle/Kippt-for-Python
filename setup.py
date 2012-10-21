@@ -17,31 +17,24 @@ if sys.argv[-1] == 'publish':
 
 os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
-packages = ['kippt_wrapper']
-
-requires = []
-
 description = ""
-with open('README.md','r') as readme:
+with open('README','r') as readme:
     description = readme.read()
-license = ""
+license = "wtfpl"
 with open('LICENSE','r') as licenseFile:
     license = licenseFile.read()
 
-
 setup(
-    name='Kippt Wrapper',
-    version="0.1",
+    name='kippt',
+    version="0.1.1dev",
     description='Kippt.com API wrapper for Python',
-    long_description=description,
-    author='Thomas Biddle',
+    long_description=open('README').read(),
+    author='TJ (Thomas) Biddle',
     author_email='me@ThomasBiddle.com',
     url='https://github.com/thomasbiddle/Kippt-Python-Wrapper',
-    packages=packages,
+    packages=['kippt',],
     package_data={'': ['LICENSE']},
-    package_dir={'kippt_wrapper': 'src'},
     include_package_data=True,
-    install_requires=requires,
     license=license,
 )
 
