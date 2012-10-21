@@ -31,3 +31,12 @@ True
 >>> u.getListCollab(55284)
 [{u'username': u'thomasbiddle', u'avatar_url': u'https://secure.gravatar.com/avatar/a5cb7b8b8594fa9483d89c020e79014f/?default=https%3A%2F%2Fkippt.com%2Fstatic%2Fimg%2Fdefault-avatar.jpg&amp;s=160', u'id': 16993, u'resource_uri': u'/api/users/16993/'}]
 </pre> 
+
+<h3>License</h3>
+<p>
+/* This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the Do What The Fuck You Want
+ * To Public License, Version 2, as published by Sam Hocevar. See
+ * http://sam.zoy.org/wtfpl/COPYING for more details. */
+</p>
