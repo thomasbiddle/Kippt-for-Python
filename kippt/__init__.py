@@ -1,1 +1,1 @@
-from kippt.kippt import Kippt
+from kippt import kippt
