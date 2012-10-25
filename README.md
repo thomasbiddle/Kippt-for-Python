@@ -51,3 +51,11 @@ True
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 </p>
+
+<h3>Contribution</h3>
+<p>
+	Fork the project.
+	Create a new feature branch.
+	Hack.
+	Submit a pull request.
+</p>
