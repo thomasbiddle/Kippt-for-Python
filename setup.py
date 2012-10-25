@@ -3,9 +3,6 @@
 import os
 import sys
 
-import requests
-from requests.compat import is_py2
-
 try:
     from setuptools import setup
 except ImportError:
@@ -19,7 +16,7 @@ os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
 setup(
     name='kippt',
-    version="1.0.0",
+    version="1.0.2",
     description='Kippt.com API wrapper for Python',
     long_description=open('README').read(),
     author='TJ (Thomas) Biddle',
@@ -27,6 +24,7 @@ setup(
     url='https://github.com/thomasbiddle/Kippt-Python-Wrapper',
     packages=['kippt',],
     package_data={'': ['LICENSE']},
+    install_requires=['requests'],
     include_package_data=True,
     license='wtfpl',
 )
