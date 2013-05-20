@@ -6,8 +6,8 @@ from notifications import Notifications
 from users import Users
 
 
-class KipptAPI:
-    """KipptAPI Base class.
+class Kippt:
+    """Kippt Base class.
 
     This class should be used to instantiate the wrapper and authenticate.
 

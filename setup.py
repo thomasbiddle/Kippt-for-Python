@@ -16,17 +16,17 @@ os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 
 setup(
     name='kippt',
-    version="1.0.2",
+    version="2.0.0",
     description='Kippt.com API wrapper for Python',
     long_description=open('README').read(),
     author='TJ (Thomas) Biddle',
     author_email='me@ThomasBiddle.com',
     url='https://github.com/thomasbiddle/Kippt-Python-Wrapper',
-    packages=['kippt',],
+    packages=['kippt'],
     package_data={'': ['LICENSE']},
     install_requires=['requests'],
     include_package_data=True,
-    license='wtfpl',
+    license='MIT',
 )
 
 del os.environ['PYTHONDONTWRITEBYTECODE']
