@@ -1,6 +1,7 @@
 import requests
 
 from clips import Clips
+from notifications import Notifications
 
 
 class KipptAPI:
@@ -35,5 +36,15 @@ class KipptAPI:
 
         self.header['X-Kippt-API-Token'] = self.api_token
 
+    def account(self):
+        r = requests.get(
+            "https://kippt.com/api/account",
+            headers=self.header
+        )
+        return (r.json())
+
     def clips(self):
         return Clips(self)
+
+    def notifications(self):
+        return Notifications(self)
