@@ -3,6 +3,7 @@ import requests
 from clips import Clips
 from lists import Lists
 from notifications import Notifications
+from users import Users
 
 
 class KipptAPI:
@@ -52,3 +53,6 @@ class KipptAPI:
 
     def notifications(self):
         return Notifications(self)
+
+    def users(self):
+        return Users(self)
