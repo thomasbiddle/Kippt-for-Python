@@ -27,18 +27,23 @@ for any further requests.
     k = Kippt('my_username', api_token='my_crazy_long_api_token')
 
 Checkout your profile:
+
     k.account()
 
 Checkout some other user's profile:
+
     k.users().user(12345).profile()
 
 Checkout your Kippt news feed:
+
     k.clips().feed()
 
 How about with a larger limit?:
+
     k.clips().feed(limit=100)
 
 Or offset?:
+
     k.clips().feed(limit=40, offset=5)
 
 ### License
