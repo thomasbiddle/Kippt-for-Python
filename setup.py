@@ -18,7 +18,7 @@ setup(
     name='kippt',
     version="2.0.0",
     description='Kippt.com API wrapper for Python',
-    long_description=open('README').read(),
+    long_description=open('README.md').read(),
     author='TJ (Thomas) Biddle',
     author_email='me@ThomasBiddle.com',
     url='https://github.com/thomasbiddle/Kippt-Python-Wrapper',
