@@ -74,6 +74,21 @@ class Clips:
         )
         return (r.json())
 
+    def search(self, query, **args):
+        """ Search for a clip.
+
+        Parameters:
+        - query String we are searching for.
+        """
+        limit = args['limit'] if 'limit' in args else 20
+        offset = args['offset'] if 'offset' in args else 0
+
+        r = requests.get(
+            "https://kippt.com/api/clips/search?q=%s&limit=%s&offset=%s" % (query, limit, offset),
+            headers=self.kippt.header
+        )
+        return (r.json())
+
     def clip(self, id):
         """ Returns a Clip object.
 
