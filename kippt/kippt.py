@@ -1,9 +1,9 @@
 import requests
 
-from clips import Clips
-from lists import Lists
-from notifications import Notifications
-from users import Users
+from kippt.clips import Clips
+from kippt.lists import Lists
+from kippt.notifications import Notifications
+from kippt.users import Users
 
 
 class Kippt:
